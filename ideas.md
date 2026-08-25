@@ -31,7 +31,7 @@ The landing page follows an editorial journey of large asymmetrical scenes, offs
 
 ### Signature Elements
 
-1. A star-centred butterfly motif repeated in calm, subtle details.
+1. A flowing butterfly motif repeated in calm, subtle details.
 2. Tactile 3D objects—pads, backpacks, maps, books, and speech bubbles—set against generous white space.
 3. Soft orbit rings and dotted pathways to link health steps, education, and support.
 
@@ -63,7 +63,11 @@ Headlines are encouraging without patronising; CTAs are specific and gentle; mic
 
 ### Wordmark & Logo
 
-The supplied butterfly-and-star MenaCare logo is the primary wordmark. The brand mark appears as a bolder star-centred butterfly icon in navigation, utility moments, and the favicon.
+The supplied butterfly logo is the primary wordmark. The brand mark appears as a bolder flowing butterfly icon in navigation, utility moments, and the favicon.
+
+## Style Decisions
+
+The star motif has been removed. The visual language now relies on the butterfly, hearts, rounded dots, soft orbit rings, and tactile objects for personality.
 
 ### Signature Brand Color
 

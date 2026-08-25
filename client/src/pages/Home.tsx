@@ -31,7 +31,6 @@ import {
   Send,
   ShieldCheck,
   Smile,
-  Sparkles,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { MapView } from "@/components/Map";
@@ -41,11 +40,11 @@ type View = "home" | "track" | "learn" | "pads" | "chat" | "support" | "profile"
 type Message = { sender: "bot" | "user"; text: string };
 
 const assets = {
-  mark: "/manus-storage/menacare-butterfly-mark_c551e775.png",
+  mark: "/manus-storage/menacare-butterfly-mark-no-star_94ff0096.png",
   primaryLogo: "/manus-storage/Primary-logo1_ed2f0176.png",
-  hero: "/manus-storage/menacare-hero-orbit_1c3f14a6.png",
-  resource: "/manus-storage/menacare-resource-access_4e9b6a32.png",
-  learning: "/manus-storage/menacare-learning-garden_23a348fe.png",
+  hero: "/manus-storage/menacare-hero-orbit-no-stars_8cd2773e.png",
+  resource: "/manus-storage/menacare-resource-access-no-stars_9e3eebc1.png",
+  learning: "/manus-storage/menacare-learning-garden-no-stars_2b132367.png",
   youngWoman: "/manus-storage/hero-woman_3dc44d85.jpg",
   bot: "/manus-storage/mena-bot_bf6b7b2c.png",
   backpack: "/manus-storage/backpack_ba45b31d.png",
@@ -77,7 +76,7 @@ const moodOptions = ["Good", "Okay", "Uncomfortable", "Not great"];
 function Brand({ light = false }: { light?: boolean }) {
   return (
     <a className="brand" href="#top" aria-label="MenaCare home">
-      <span className="brand-mark"><img src={assets.mark} alt="MenaCare butterfly star" /></span>
+      <span className="brand-mark"><img src={assets.mark} alt="MenaCare butterfly" /></span>
       <span className="brand-word">Mena<span>Care</span></span>
       {light ? null : <span className="sr-only">Because Her Future Shouldn't Pause</span>}
     </a>
@@ -117,7 +116,7 @@ function Landing({ onEnter, hasOnboarded }: { onEnter: () => void; hasOnboarded:
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   const featureIcons = [CalendarDays, BookOpen, MessageCircle];
   const programRows: [string, string, LucideIcon][] = [
-    ["First period onboarding", "A gentle, no-pressure place to begin.", Sparkles],
+    ["First period onboarding", "A gentle, no-pressure place to begin.", Heart],
     ["Cycle tracking", "Spot patterns and log what you feel.", CalendarDays],
     ["Ask Mena", "Private, supportive answers when you need them.", MessageCircle],
     ["Learn & grow", "Clear lessons built for real questions.", BookOpen],
@@ -138,7 +137,7 @@ function Landing({ onEnter, hasOnboarded }: { onEnter: () => void; hasOnboarded:
         <section className="hero">
           <div className="hero-grid">
             <div>
-              <span className="mc-eyebrow"><Sparkles size={14} /> A softer way to learn your rhythm</span>
+              <span className="mc-eyebrow"><Heart size={14} /> A softer way to learn your rhythm</span>
               <h1 className="mc-display">Your body. <br />Your journey. <br /><strong>We’re here for you.</strong></h1>
               <p className="mc-copy" style={{ maxWidth: 490 }}>MenaCare helps you understand your cycle, ask the questions on your mind, and find care when you need it—at your pace.</p>
               <div className="hero-actions">
@@ -158,7 +157,7 @@ function Landing({ onEnter, hasOnboarded }: { onEnter: () => void; hasOnboarded:
           </div>
         </section>
 
-        <div className="landing-ribbon"><span className="ribbon-sparkle"><Sparkles size={20} /></span><div><strong>Because her future shouldn’t pause.</strong><p>Health information and support should feel clear, kind, and close at hand.</p></div></div>
+        <div className="landing-ribbon"><span className="ribbon-sparkle"><Heart size={20} /></span><div><strong>Because her future shouldn’t pause.</strong><p>Health information and support should feel clear, kind, and close at hand.</p></div></div>
 
         <section id="why" className="landing-section">
           <div className="section-intro"><span className="mc-kicker">A caring toolkit</span><h2 className="mc-display">Three ways to feel more sure of yourself.</h2><p className="mc-copy">A private little corner of the internet for information, check-ins, and practical help—without overwhelming you.</p></div>
@@ -166,7 +165,7 @@ function Landing({ onEnter, hasOnboarded }: { onEnter: () => void; hasOnboarded:
             {["Track", "Learn", "Ask"].map((title, index) => {
               const Icon = featureIcons[index];
               const copy = ["Notice your cycle, moods, and symptoms in a calm calendar.", "Build confidence with kind, bite-sized health lessons.", "Talk through questions with Mena, your supportive AI guide."][index];
-              return <article key={title}><span className="feature-number"><Icon size={20} /></span><h3>{title}</h3><p>{copy}</p>{index === 0 ? <img className="feature-flair" src={assets.backpack} alt="" /> : <span className="feature-constellation"><Sparkles size={42} strokeWidth={1.2} /></span>}</article>;
+              return <article key={title}><span className="feature-number"><Icon size={20} /></span><h3>{title}</h3><p>{copy}</p>{index === 0 ? <img className="feature-flair" src={assets.backpack} alt="" /> : <span className="feature-heart-flair"><Heart size={33} fill="currentColor" strokeWidth={1.2} /></span>}</article>;
             })}
           </div>
         </section>
@@ -198,7 +197,7 @@ function Onboarding({ onComplete, onBack }: { onComplete: (name: string, ageGrou
   const valid = step === 0 || (step === 1 && Boolean(ageGroup)) || (step === 2 && Boolean(firstPeriod));
   return <div className="onboarding"><aside className="onboarding-aside"><button style={{ background: "transparent", padding: 0, textAlign: "left" }} onClick={onBack}><Brand light /></button><div><p className="mc-kicker" style={{ color: "#FF99D8" }}>Your MenaCare space</p><h1 className="mc-display">Here to help you feel more like yourself.</h1><p>A private corner for the questions, changes, and everyday moments that matter.</p></div><div className="onboarding-quote">“Because her future shouldn’t pause.”</div></aside><main className="onboarding-main"><section className="onboarding-panel"><div className="stepper" aria-label={`Step ${step + 1} of 3`}><span className="active" /><span className={step > 0 ? "active" : ""} /><span className={step > 1 ? "active" : ""} /></div>
     {step === 0 && <><span className="mc-eyebrow"><Heart size={14} /> You are in the right place</span><h2 className="mc-display">Let’s make this feel a little easier.</h2><p className="mc-copy">MenaCare is here to help you understand your body, find reliable answers, and feel supported every step of the way.</p><div className="onboarding-art"><img src={assets.hero} alt="Warm MenaCare welcome illustration" /></div><label className="field-label" htmlFor="name">What would you like us to call you? <span style={{ fontWeight: 500 }}>(optional)</span></label><input id="name" className="name-input" placeholder="Your first name or a nickname" value={name} onChange={e => setName(e.target.value)} /></>}
-    {step === 1 && <><span className="mc-eyebrow"><Sparkles size={14} /> A little about you</span><h2 className="mc-display">Which age group feels right for you?</h2><p className="mc-copy">This helps us keep your MenaCare space clear, comfortable, and age-appropriate.</p><div className="age-grid">{["9–12", "13–15", "16–18", "18+"].map(age => <button key={age} className={`choice ${ageGroup === age ? "selected" : ""}`} onClick={() => setAgeGroup(age)}>{age}</button>)}</div><p className="hero-note"><LockKeyhole size={13} /> Your details stay in this browser.</p></>}
+    {step === 1 && <><span className="mc-eyebrow"><Heart size={14} /> A little about you</span><h2 className="mc-display">Which age group feels right for you?</h2><p className="mc-copy">This helps us keep your MenaCare space clear, comfortable, and age-appropriate.</p><div className="age-grid">{["9–12", "13–15", "16–18", "18+"].map(age => <button key={age} className={`choice ${ageGroup === age ? "selected" : ""}`} onClick={() => setAgeGroup(age)}>{age}</button>)}</div><p className="hero-note"><LockKeyhole size={13} /> Your details stay in this browser.</p></>}
     {step === 2 && <><span className="mc-eyebrow"><CalendarDays size={14} /> One last thing</span><h2 className="mc-display">Have you had your first period yet?</h2><p className="mc-copy">There is no wrong answer. This simply helps us show the most useful starting points.</p><div className="age-grid">{[["Yes", "I have already started"], ["No", "I am still waiting"], ["Not sure", "I have questions about it"]].map(([title, detail]) => <button key={title} className={`choice ${firstPeriod === title ? "selected" : ""}`} onClick={() => setFirstPeriod(title)}><span>{title}<small style={{ display: "block", marginTop: ".2rem", color: "rgba(5,10,48,.58)", fontSize: ".62rem", fontWeight: 500 }}>{detail}</small></span></button>)}</div></>}
     <div className="onboarding-actions"><button className="mc-button ghost" onClick={() => step === 0 ? onBack() : setStep(current => current - 1)}>Back</button><button className="mc-button pink" disabled={!valid} onClick={next}>{step === 2 ? "Open my space" : "Continue"} <ArrowRight size={15} /></button></div>
   </section></main></div>;
